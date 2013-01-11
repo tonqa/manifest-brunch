@@ -8,7 +8,7 @@ module.exports = class CacheManifestBuilder
 
   compile: (data, path, callback) ->
   	filePath = syspath.join (syspath.dirname path), "cache.manifest"
-    fs.writeFile filePath, data, null
+    # fs.writeFile filePath, data, null
 	callback err, data
 
   constructor: (@config) ->
