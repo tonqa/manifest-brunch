@@ -12,8 +12,9 @@ module.exports = class CacheManifestBuilder
 
   compile: (data, path, callback) ->
     #filePath = syspath.join (syspath.dirname path), "cache.manifest2"
-    fs.writeFile "bla.txt", data, null
-    util.log "test"
-    callback null, data
+    fs.writeFile "/Users/alexander/Development/Orderbird/orderbird.myorderbird_client/client/public/bla.txt", data, ->
+      util.log "test"
+      callback null, data
+
 
   # onCompile: (generatedFiles) ->
