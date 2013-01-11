@@ -4,6 +4,8 @@ util = require 'util'
 
 module.exports = class CacheManifestBuilder
   brunchPlugin: yes
+  type: 'javascript'
+  extension: 'coffee'
 
   constructor: (@config) ->
     null
