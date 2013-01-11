@@ -1,5 +1,5 @@
 syspath = require 'path'
-filesystem = require 'fs'
+fs = require 'fs'
 
 module.exports = class CacheManifestBuilder
   brunchPlugin: yes
