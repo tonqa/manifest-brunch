@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Adds Cache Manifest support to brunch.",
   "author": "Alexander Koglin (http://eglador.de/)",
-  "homepage": "https://github.com/brunch/manifest-brunch",
+  "homepage": "https://github.com/tonqa/manifest-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:brunch/manifest-brunch.git"
+    "url": "git@github.com:tonqa/manifest-brunch.git"
   },
   "main": "./lib/index",
   "scripts": {
