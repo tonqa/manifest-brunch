@@ -9,9 +9,9 @@ module.exports = class CacheManifestBuilder
     null
 
   compile: (data, path, callback) ->
-  	filePath = syspath.join (syspath.dirname path), "cache.manifest"
+    filePath = syspath.join (syspath.dirname path), "cache.manifest"
     # fs.writeFile filePath, data, null
     util.log "test"
-	callback null, data
+    callback null, data
 
   # onCompile: (generatedFiles) ->
