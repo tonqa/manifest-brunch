@@ -19,13 +19,12 @@ module.exports = class CacheManifestBuilder
       fs.readFile @path, (error, buffer) =>
         return console.log error if error?
         data = buffer.toString()
-        for generatedFile in generatedFiles
-          data += "\n\n"
-          data += for key, val of generatedFile
-            "#{key} is #{val}"
         newData = if data.match(re)
           data.replace(re, compilationTime)
         else
           data + compilationTime
+        for generatedFile in generatedFiles
+          filePath = generatedFile.path.replace("public/", "")
+          newData += "\nfilePath\n"
         fs.writeFile @path, newData, (error) =>
           return console.log error if error?
