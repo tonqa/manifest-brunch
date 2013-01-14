@@ -21,5 +21,10 @@ module.exports = class CacheManifestBuilder
           data.replace(re, compilationTime)
         else
           data + compilationTime
+        filePaths = []
+        for generatedFile in generatedFiles
+          filePath = generatedFile.path.replace("public/", "")
+          filePaths.push(filePath) unless filePath.match /^test\//
+        newData += "\n" + filePaths.sort().join("\n")
         fs.writeFile @path, newData, (error) =>
           return console.log error if error?
