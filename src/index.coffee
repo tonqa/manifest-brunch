@@ -8,7 +8,7 @@ module.exports = class CacheManifestBuilder
   extension: 'coffee'
 
   constructor: (@config) ->
-    @path = sysPath.join @config.paths.public, 'appcache.appcache'
+    @path = sysPath.join @config.paths.public, 'cache.manifest'
     Object.freeze this
 
   # compile: (data, path, callback) ->
