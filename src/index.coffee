@@ -26,9 +26,10 @@ module.exports = class CacheManifestBuilder
           filePath = generatedFile.path.replace("public/", "")
           filePaths.push(filePath) unless filePath.match /^test\//
         newData += "\n" + filePaths.sort().join("\n") + "\n\n"
-        fs.readdir sysPath.join(@config.paths.public, "img"), (err, files) =>
+        directory = sysPath.join(@config.paths.public, "img")
+        fs.readdir directory, (err, files) =>
           unless err?
             for file in files 
-              newData += "#{file}\n"
+              newData += sysPath.join directory, file + "\n"
           fs.writeFile @path, newData, (error) =>
             return console.log error if error?
