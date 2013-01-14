@@ -27,7 +27,7 @@ module.exports = class CacheManifestBuilder
         for generatedFile in generatedFiles
           filePath = generatedFile.path.replace("public/", "")
           filePaths.push(filePath) unless filePath.match /^test\//
-        newData += "\n  " + filePaths.sort().join("\n") + "\n"
+        newData += "\n" + filePaths.sort().join("\n  ") + "\n"
         newData += "\n# static files\n"
         directory = sysPath.join(@config.paths.public, "img")
         fs.readdir directory, (err, files) =>
