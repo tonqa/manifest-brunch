@@ -4,8 +4,6 @@ util = require 'util'
 
 module.exports = class CacheManifestBuilder
   brunchPlugin: yes
-  type: 'javascript'
-  extension: 'coffee'
 
   constructor: (@config) ->
     @path = sysPath.join @config.paths.public, 'cache.manifest'
@@ -25,7 +23,8 @@ module.exports = class CacheManifestBuilder
           data + compilationTime
         filePaths = []
         for generatedFile in generatedFiles
-          filePaths.push generatedFile.path.replace("public/", "")
+          filePath = generatedFile.path.replace("public/", "")
+          filePaths.push(filePath) unless filePath.match /^test\//
         newData += "\n" + filePaths.sort().join("\n")
         fs.writeFile @path, newData, (error) =>
           return console.log error if error?
