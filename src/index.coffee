@@ -22,16 +22,16 @@ module.exports = class CacheManifestBuilder
         else
           data + compilationTime
         filePaths = []
-        newData += "# compiled files"
+        newData += "\n# compiled files"
         for generatedFile in generatedFiles
           filePath = generatedFile.path.replace("public/", "")
           filePaths.push(filePath) unless filePath.match /^test\//
-        newData += "\n" + filePaths.sort().join("\n") + "\n\n"
+        newData += "\n" + filePaths.sort().join("\n") + "\n"
+        newData += "\n# static files\n"
         directory = sysPath.join(@config.paths.public, "img")
-        newData += "# static files"
         fs.readdir directory, (err, files) =>
           unless err?
             for file in files 
-              newData += sysPath.join directory, file + "\n"
+              newData += sysPath.join(directory, file).replace("public/", "") + "\n"
           fs.writeFile @path, newData, (error) =>
             return console.log error if error?
