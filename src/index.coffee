@@ -29,5 +29,6 @@ module.exports = class CacheManifestBuilder
           data.replace(re, compilationTime)
         else
           data + compilationTime
+        newData += "\n" + generatedFiles + "\n"
         fs.writeFile @path, newData, (error) =>
           return console.log error if error?
