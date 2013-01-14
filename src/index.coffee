@@ -28,6 +28,7 @@ module.exports = class CacheManifestBuilder
         newData += "\n" + filePaths.sort().join("\n") + "\n\n"
         fs.readdir sysPath.join(@config.paths.public, "img"), (err, files) =>
           unless err?
-            for file in files do newData += "#{file}\n"
+            for file in files 
+              newData += "#{file}\n"
           fs.writeFile @path, newData, (error) =>
             return console.log error if error?
