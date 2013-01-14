@@ -19,7 +19,8 @@ module.exports = class CacheManifestBuilder
       fs.readFile @path, (error, buffer) =>
         return console.log error if error?
         data = buffer.toString()
-        data += "\n#{generatedFiles}\n"
+        data += for key, val of generatedFiles
+          "#{key} is #{val}"
         newData = if data.match(re)
           data.replace(re, compilationTime)
         else
