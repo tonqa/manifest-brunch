@@ -22,11 +22,13 @@ module.exports = class CacheManifestBuilder
         else
           data + compilationTime
         filePaths = []
+        newData += "# compiled files"
         for generatedFile in generatedFiles
           filePath = generatedFile.path.replace("public/", "")
           filePaths.push(filePath) unless filePath.match /^test\//
         newData += "\n" + filePaths.sort().join("\n") + "\n\n"
         directory = sysPath.join(@config.paths.public, "img")
+        newData += "# static files"
         fs.readdir directory, (err, files) =>
           unless err?
             for file in files 
