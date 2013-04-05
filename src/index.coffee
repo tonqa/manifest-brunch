@@ -17,12 +17,12 @@ module.exports = class CacheManifestBuilder
       fs.readFile @path, (error, buffer) =>
         return console.log error if error?
         data = buffer.toString()
-        newData = if data.match(re)
+        if data.match(re)
           data.replace(re, compilationTime)
-          fs.writeFile @path, newData, (error) =>
+          fs.writeFile @path, data, (error) =>
             return console.log error if error?
         else
-          data + compilationTime
+          newData = "CACHE MANIFEST\n\n" + compilationTime
           filePaths = []
           newData += "\nCACHE:\n"
           newData += "\n# compiled files"
