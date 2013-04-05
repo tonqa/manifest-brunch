@@ -16,11 +16,7 @@ module.exports = class CacheManifestBuilder
       return unless exists
       fs.readFile @path, (error, buffer) =>
         return console.log error if error?
-        data = buffer.toString()
-        newData = if data.match(re)
-          data.replace(re, compilationTime)
-        else
-          data + compilationTime
+        data = "" + compilationTime
         filePaths = []
         newData += "\nCACHE:\n"
         newData += "\n# compiled files"
