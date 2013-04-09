@@ -35,7 +35,8 @@ module.exports = class CacheManifestBuilder
           fs.readdir directory, (err, files) =>
             unless err?
               for file in files 
-                newData += " " + sysPath.join(directory, file).replace("public/", "") + "\n"
+                unless file.match /^venues/
+                  newData += " " + sysPath.join(directory, file).replace("public/", "") + "\n"
             newData += "\nNETWORK:\n*\n"
             fs.writeFile @path, newData, (error) =>
               return console.log error if error?
